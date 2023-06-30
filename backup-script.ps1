@@ -27,7 +27,7 @@ foreach ($vm in $vms)
     while ($snapshots.Count -gt 3)
     {
         $snapshot = $snapshots | Sort-Object -Property Created | Select-Object -First 1
-        Remove-Snapshot -Snapshot $snapshot -Confirm:$false
+        Remove-Snapshot -Snapshot $snapshot -Confirm:$false -RunAsync
         $snapshots = Get-Snapshot -VM $vm
     }
 }
